@@ -1,0 +1,262 @@
+////cree un usuario para la app
+CREATE USER HotelApp
+IDENTIFIED BY OracleCloud123
+DEFAULT TABLESPACE "DATA"
+TEMPORARY TABLESPACE "TEMP";
+
+ALTER USER HotelApp QUOTA UNLIMITED ON DATA;
+
+GRANT CREATE SESSION TO HotelApp;
+GRANT "RESOURCE" TO HotelApp;
+
+ALTER USER HotelApp DEFAULT ROLE "RESOURCE";
+//eliminar secuencias y tablas a modo de pruebas
+DROP SEQUENCE SEQ_CLIENTE;
+DROP SEQUENCE SEQ_HABITACION;
+DROP SEQUENCE SEQ_RESERVA;
+DROP SEQUENCE SEQ_HOTEL;
+DROP SEQUENCE SEQ_PAGO_RESERVA;
+DROP SEQUENCE SEQ_PAGO_TOTAL;
+DROP SEQUENCE SEQ_SERVICIO_TRABAJO;
+DROP SEQUENCE SEQ_ADMIN;
+DROP SEQUENCE SEQ_PERSONAL_HOTEL;
+
+
+DROP TABLE CATEGORIA_CLIENTE CASCADE CONSTRAINTS;
+DROP TABLE CLIENTE CASCADE CONSTRAINTS;
+DROP TABLE HOTEL CASCADE CONSTRAINTS;
+DROP TABLE HABITACION CASCADE CONSTRAINTS;
+DROP TABLE RESERVA CASCADE CONSTRAINTS;
+DROP TABLE PAGO_RESERVA CASCADE CONSTRAINTS;
+DROP TABLE PAGO_TOTAL CASCADE CONSTRAINTS;
+DROP TABLE SERVICIO_TRABAJO CASCADE CONSTRAINTS;
+DROP TABLE PERSONAL_ADMIN CASCADE CONSTRAINTS;
+DROP TABLE PERSONAL_HOTEL CASCADE CONSTRAINTS;
+
+
+CREATE SEQUENCE SEQ_CLIENTE
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SEQ_RESERVA
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SEQ_HABITACION
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SEQ_HOTEL
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SEQ_PAGO_RESERVA
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SEQ_PAGO_TOTAL
+START WITH 1
+INCREMENT BY 1;
+
+
+CREATE SEQUENCE SEQ_SERVICIO_TRABAJO
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SEQ_ADMIN
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SEQ_PERSONAL_HOTEL
+START WITH 1
+INCREMENT BY 1;
+
+
+//creación de tablas
+CREATE TABLE CATEGORIA_CLIENTE(
+ id_categoria NUMBER(2) NOT NULL,
+ descripcion_cat VARCHAR2(20) NOT NULL,
+ CONSTRAINT PK_ID_CATEGORIA PRIMARY KEY (id_categoria)
+);  
+
+CREATE TABLE CLIENTE(
+ id_cliente NUMBER DEFAULT SEQ_CLIENTE.NEXTVAL NOT NULL,
+ nombre_cliente VARCHAR2(25) NOT NULL,
+ apellido_cliente VARCHAR2(25) NOT NULL,
+ correo_cliente VARCHAR2(50) NOT NULL,
+ telefono_cliente VARCHAR2(25) NOT NULL,
+ id_categoria_fk NUMBER NOT NULL,
+ contrasenia VARCHAR2(50) NOT NULL,
+ recuperacion_contrasenia VARCHAR2(50) NOT NULL,
+ CONSTRAINT PK_CLIENTE PRIMARY KEY (id_cliente)
+);
+
+
+CREATE TABLE HOTEL(
+ id_hotel NUMBER DEFAULT SEQ_HOTEL.NEXTVAL NOT NULL,
+ nombre_hotel VARCHAR2(25) NOT NULL,
+ direccion_hotel VARCHAR2(25) NOT NULL,
+ descripcion_hotel VARCHAR2(100) NOT NULL,
+ telefono_hotel VARCHAR2(25) NOT NULL,
+CONSTRAINT PK_HOTEL PRIMARY KEY (id_hotel)
+);
+
+CREATE TABLE HABITACION(
+ id_habitacion NUMBER DEFAULT SEQ_HABITACION.NEXTVAL NOT NULL,
+ tipo_habitacion VARCHAR2(40) NOT NULL,
+ capacidad NUMBER(3) NOT NULL,
+ precio_dia NUMBER(12) NOT NULL,
+ descripcion_habitacion VARCHAR2(100) NOT NULL,
+ num_habitacion NUMBER(5) NOT NULL,
+ descrip_disponibilidad CHAR(1),
+ id_hotel_fk NUMBER NOT NULL,
+ CONSTRAINT PK_HABITACION PRIMARY KEY (id_habitacion)
+);
+
+
+CREATE TABLE RESERVA(
+ id_reserva NUMBER DEFAULT SEQ_RESERVA.NEXTVAL NOT NULL,
+ id_habitacion_fk NUMBER NOT NULL,
+ id_cliente_fk NUMBER NOT NULL,
+ check_in DATE,
+ check_out DATE,
+ CONSTRAINT PK_RESERVA PRIMARY KEY (id_reserva)
+);
+
+CREATE TABLE PAGO_RESERVA(
+ id_pago_reserva NUMBER DEFAULT SEQ_PAGO_RESERVA.NEXTVAL NOT NULL,
+ id_boleta VARCHAR2(25) NOT NULL,
+ moneda_pago VARCHAR2(25) NOT NULL,
+ monto_30porcen NUMBER(15, 2) NOT NULL,
+ fecha_hora_pago TIMESTAMP NOT NULL,
+ id_pago_reserva_fk NUMBER NOT NULL,
+ CONSTRAINT PK_PAGO_RESERVA PRIMARY KEY (id_pago_reserva)
+);
+
+CREATE TABLE PAGO_TOTAL(
+ id_pago_reserva_total NUMBER DEFAULT SEQ_PAGO_RESERVA_TOTAL.NEXTVAL NOT NULL,
+ id_boleta VARCHAR2(25) NOT NULL,
+ moneda_pago VARCHAR2(25) NOT NULL,
+ monto_total NUMBER(15, 2) NOT NULL,
+ fecha_hora_pago TIMESTAMP NOT NULL,
+ id_pago_reserva_total_fk NUMBER NOT NULL,
+ CONSTRAINT PK_PAGO_TOTAL PRIMARY KEY (id_pago_reserva_total)
+);
+
+
+CREATE TABLE SERVICIO_TRABAJO(
+ id_servicio NUMBER DEFAULT SEQ_SERVICIO_TRABAJO.NEXTVAL NOT NULL,
+ id_hotel_fk NUMBER NOT NULL,
+ tipo_servicio VARCHAR2(25) NOT NULL,
+ descripcion_servicio VARCHAR2(100) NOT NULL,
+ CONSTRAINT PK_SERVICIO_TRABAJO PRIMARY KEY (id_servicio)
+);
+
+CREATE TABLE PERSONAL_ADMIN(
+ id_admin NUMBER DEFAULT SEQ_ADMIN.NEXTVAL NOT NULL,
+ nombre_admin VARCHAR2(25) NOT NULL,
+ apellido_admin VARCHAR2(25) NOT NULL,
+ correo_admin VARCHAR2(50) NOT NULL,
+ telefono_admin VARCHAR2(25) NOT NULL,
+ contrasenia VARCHAR2(50) NOT NULL,
+ recuperacion_contrasenia VARCHAR2(50) NOT NULL,
+ id_hotel_fk NUMBER NOT NULL,
+ CONSTRAINT PK_PERSONAL_ADMIN PRIMARY KEY (id_admin)
+);
+
+CREATE TABLE PERSONAL_HOTEL(
+ id_personal_hotel NUMBER DEFAULT SEQ_PERSONAL_HOTEL.NEXTVAL NOT NULL,
+ nombre_personal_h VARCHAR2(25) NOT NULL,
+ apellido_personal_h VARCHAR2(25) NOT NULL,
+ correo_personal_h VARCHAR2(50) NOT NULL,
+ telefono_personal_h VARCHAR2(25) NOT NULL,
+ id_servicio_h_fk NUMBER NOT NULL,
+ contrasenia VARCHAR2(50) NOT NULL,
+ recuperacion_contrasenia VARCHAR2(50) NOT NULL,
+ CONSTRAINT PK_PERSONAL_HOTEL PRIMARY KEY (id_personal_hotel)
+);  
+
+ALTER TABLE CLIENTE 
+ADD CONSTRAINT FK_CATEGORIA_CLIENTE FOREIGN KEY (id_categoria_fk)
+  REFERENCES CATEGORIA_CLIENTE(id_categoria);
+
+
+ALTER TABLE HABITACION
+ADD CONSTRAINT FK_HOTEL_HABITACION FOREIGN KEY (id_hotel_fk)
+  REFERENCES HOTEL(id_hotel);
+
+
+ALTER TABLE RESERVA
+ADD CONSTRAINT FK_RES_HABITACION FOREIGN KEY (id_habitacion_fk)
+  REFERENCES HABITACION(id_habitacion);
+  
+ALTER TABLE RESERVA
+ADD CONSTRAINT FK_RES_CLIENTE FOREIGN KEY (id_cliente_fk)
+  REFERENCES CLIENTE(id_cliente);
+
+ALTER TABLE PAGO_RESERVA
+ADD CONSTRAINT FK_PAGO_RESERVA FOREIGN KEY (id_pago_reserva_fk)
+  REFERENCES RESERVA(id_reserva);
+
+ALTER TABLE PAGO_TOTAL
+ADD CONSTRAINT FK_PAGO_RESERVA_TOTAL FOREIGN KEY (id_pago_reserva_total_fk)
+  REFERENCES RESERVA(id_reserva);
+
+ALTER TABLE SERVICIO_TRABAJO
+ADD CONSTRAINT FK_HOTEL FOREIGN KEY (id_hotel_fk)
+  REFERENCES HOTEL(id_hotel);
+
+ALTER TABLE PERSONAL_HOTEL
+ADD CONSTRAINT FK_SERVICIOS_PERSONAL FOREIGN KEY (id_servicio_h_fk)
+  REFERENCES SERVICIO_TRABAJO(id_servicio);
+
+
+ALTER TABLE PERSONAL_ADMIN
+ADD CONSTRAINT FK_ADMIN_HOTEL FOREIGN KEY (id_hotel_fk)
+  REFERENCES HOTEL(id_hotel);
+
+--categoria cliente
+INSERT INTO CATEGORIA_CLIENTE VALUES(1,'VIP');
+INSERT INTO CATEGORIA_CLIENTE VALUES(2,'NORMAL');
+
+--información hotel
+INSERT INTO HOTEL (nombre_hotel, direccion_hotel, descripcion_hotel, telefono_hotel) 
+VALUES ('Hotel_Pacific_Reef', 'AV. Alemania 1234', 'Elegante establecimiento hotelero', '2111222');
+
+--información para tabla servicios
+INSERT INTO SERVICIO_TRABAJO (id_hotel_fk,tipo_servicio,descripcion_servicio) 
+VALUES(1,'RECEPCION','Personal que recibe a los clientes ayudandoles en su ingreso y danto informacion.');
+
+INSERT INTO SERVICIO_TRABAJO (id_hotel_fk, tipo_servicio, descripcion_servicio) 
+VALUES (1, 'LIMPIEZA', 'Equipo encargado de mantener las habitaciones y áreas comunes del hotel en perfectas condiciones.');
+
+INSERT INTO SERVICIO_TRABAJO (id_hotel_fk, tipo_servicio, descripcion_servicio) 
+VALUES (1, 'SEGURIDAD', 'Personal responsable de garantizar la seguridad y el bienestar de los huéspedes y empleados.');
+
+INSERT INTO SERVICIO_TRABAJO (id_hotel_fk, tipo_servicio, descripcion_servicio) 
+VALUES (1, 'COCINA', 'Equipo que prepara y sirve alimentos a los huéspedes, asegurando la calidad y presentación.');
+
+INSERT INTO SERVICIO_TRABAJO (id_hotel_fk, tipo_servicio, descripcion_servicio) 
+VALUES (1, 'GERENCIA', 'Responsable de la supervisión general de las operaciones del hotel y los huéspedes.');
+
+
+-- insertar en CLIENTE
+INSERT INTO CLIENTE (nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente, id_categoria_fk, contrasenia,recuperacion_contrasenia) 
+VALUES ('Juan', 'Pérez', 'juan.perez@example.com', '123456789', 1,'Juan123','mi nombre');
+INSERT INTO CLIENTE (nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente, id_categoria_fk, contrasenia,recuperacion_contrasenia) 
+VALUES ('Maria', 'Pérez', 'Maria_perez@example.com', '123433333', 1,'Maria123','mi nombre');
+--para prueba
+INSERT INTO CLIENTE (nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente, id_categoria_fk, contrasenia,recuperacion_contrasenia) 
+VALUES ('Pedro', 'Pérez', 'jpedro_perez@example.com', '123456333', 1,'Pedro123','mi nombre');
+COMMIT;
+--update
+UPDATE CLIENTE 
+SET telefono_cliente = '997654321'
+WHERE correo_cliente = 'jpedro_perez@example.com';
+COMMIT;
+--delete
+DELETE FROM CLIENTE 
+WHERE correo_cliente = 'jpedro_perez@example.com';
+COMMIT;
+
+SELECT * FROM CLIENTE;

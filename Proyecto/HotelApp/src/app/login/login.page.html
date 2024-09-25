@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>HotelApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">HotelApp</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title size="large">Bienvenido!</ion-card-title>
+    </ion-card-header>
+    <ion-card>
+      <br />
+      <ion-title size="large">Bienvenido!</ion-title>
+      <ion-card-content>
+        
+        <ion-item>
+          <ion-input label="Nombre Usuario" label-placement="floating" fill="outline" placeholder="Enter user" name="usuario" maxlength="8" minlength="3"></ion-input>
+        </ion-item>
+        <br />
+        <ion-item>
+          <ion-input type="password" label="Password" label-placement="floating" fill="outline" placeholder="Password" maxlength="4" name="password"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button expand="block"> Ingresar</ion-button>
+      <ion-button expand="block" (click)="registrar()"> registrarse</ion-button>
+    </ion-card>
+  </ion-card>
+
+  
+</ion-content>

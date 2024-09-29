@@ -63,8 +63,13 @@ export class RegisterPage implements OnInit {
         this.mostrarAlerta('Error', 'Error al registrar el usuario');
         console.error('Error al registrar el usuario:', error.message);
       }
+
       
     }
+}
+volverHome(){
+  this.router.navigate(['/home']);//nos redirige al home
+  console.log('voy a registrarme');
 }
 
 }

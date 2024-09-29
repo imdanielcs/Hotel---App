@@ -4,6 +4,7 @@
     <ion-icon (click)="volverHome()" slot="start" name="arrow-back-outline" ></ion-icon>
   </ion-toolbar>
 </ion-header>
+<ion-content class="ion-padding" class="ion-padding-start">
 
 <ion-content stiles [fullscreen]="true" >
   <ion-header collapse="condense">
@@ -17,9 +18,9 @@
       <br />
       <ion-title size="large">Bienvenido!</ion-title>
       <ion-card-content>
-        
+
         <ion-item>
-          <ion-input label="Nombre Usuario" label-placement="floating"  placeholder="Enter user" name="usuario" maxlength="8" minlength="3"></ion-input>
+          <ion-input label="Nombre Usuario" label-placement="floating"  placeholder="Enter user" name="usuario"></ion-input>
         </ion-item>
         <br />
         <ion-item>

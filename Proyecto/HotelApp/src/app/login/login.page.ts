@@ -33,5 +33,9 @@ export class LoginPage implements OnInit {
       this.router.navigate(['/register']);//nos redirige a registrarse
       console.log('voy a registrarme');
     }
+    volverHome(){
+      this.router.navigate(['/home']);//nos redirige al home
+      console.log('voy a registrarme');
+    }
 
 }

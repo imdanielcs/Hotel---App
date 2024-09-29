@@ -77,7 +77,7 @@ export class DbserviceService {
   
 
   // insertar los datos a la tabla cliente
-  async insertarCliente(nombre: string, apellido: string, correo: string, telefono: string, contrasenia: string, recuperacionContrasenia: string) {
+  async insertarUsuario(nombre: string, apellido: string, correo: string, telefono: string, contrasenia: string, recuperacionContrasenia: string) {
     try {
       const result = await this.db.executeSql(`INSERT INTO cliente(nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente, contrasenia, recuperacion_contrasenia) VALUES(?,?,?,?,?,?)`, [nombre, apellido, correo, telefono, contrasenia, recuperacionContrasenia]);
       

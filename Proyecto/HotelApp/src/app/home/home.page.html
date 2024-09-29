@@ -1,20 +1,87 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Menu Contenido</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content class="ion-padding" class="ion-padding-start">
+    
+      <ion-list>
+        <ion-menu-toggle><!--esto es para que al tocar se cierre nuevamnete el menu-->
+          <ion-item (click)="navigateToHome()">Home
+            <ion-icon slot="start" name="home-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item (click)="navigateToLogin()">Login
+            <ion-icon slot="start" name="person-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>  
+        <ion-menu-toggle>
+          <ion-item (click)="navigateToRegister()">Registrarse
+            <ion-icon slot="start" name="document-text-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>  
+        <!--ir a las habitaciones-->
+        <ion-menu-toggle>
+          <ion-item (click)="navigateToRoom()">Habitaciones
+            <ion-icon slot="start" name="bed-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>  
+        <!--api-->
+        <ion-menu-toggle>
+          <ion-item >Feriados en Chile
+            <ion-icon slot="start" name="calendar-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>  
+      </ion-list>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content" src >
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        
+        <ion-title ><img src="assets/icon/logo.png" alt="Logo" class="small-logo"  />Hotel Pacific </ion-title>
+        
+      </ion-toolbar>
+    </ion-header>
+    <ion-router-outlet></ion-router-outlet>
+    <link rel="icon" type="image/png" href="assets/icon/nombreHotel.png" />
+    <div class="page-background-2">
+    <ion-card>
+          <ion-card-header>
+            <ion-card-title>Bienvenido al Hotel Pacific</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Fundado en 1998, el Hotel Pacific Reef nació con una visión clara: ofrecer a los viajeros un refugio de tranquilidad, donde la hospitalidad y la comodidad se fusionan. Inspirado en la belleza del océano auténtica y relajante.
+            <br /><img src="assets/icon/nombreHotel.png" alt="Logo" class="small-image" />
+          </ion-card-content>
+        </ion-card>
+       
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Imagenes del Hotel</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+        
+          </ion-card-content>
+        </ion-card>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Información</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            El hotel está compuesto de 5 primeros pisos. En este contexto el hotel posee una capacidad total de 38
+            habitaciones. 
+          </ion-card-content>
+        </ion-card>
+      
+    
+      </div>
+</div>
+
+

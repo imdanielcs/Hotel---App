@@ -10,29 +10,32 @@
 <ion-content>
   <div class="form-container">
     <form>
-      <ion-item>
-        <ion-label position="block">Usuario</ion-label>
-        <ion-input type="text" placeholder="Ingrese su usuario"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="block">Contraseña</ion-label>
-        <ion-input type="password" placeholder="Ingrese su contraseña"></ion-input>
-      </ion-item>
 
       <ion-item>
         <ion-label position="block">Nombre</ion-label>
-        <ion-input type="text" placeholder="Ingrese su nombre"></ion-input>
+        <ion-input type="text" [(ngModel)]="nombre" placeholder="Ingrese su nombre"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="block">Apellido</ion-label>
-        <ion-input type="text" placeholder="Ingrese su apellido"></ion-input>
+        <ion-input type="text" [(ngModel)]="apellido" placeholder="Ingrese su apellido"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="block">Email</ion-label>
-        <ion-input type="email" placeholder="Ingrese su correo electrónico"></ion-input>
+        <ion-input type="email" [(ngModel)]="correo" placeholder="Ingrese su correo electrónico"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="block">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="contrasenia" placeholder="Ingrese su contraseña"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="block">Dato de recuperación de contraseñia</ion-label>
+        <ion-input type="text" [(ngModel)]="recuperacionContrasenia" placeholder="Ingrese dato secreto"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="block">Telefono</ion-label>
+        <ion-input type="text" [(ngModel)]="telefono" placeholder="Ingrese su telefono"></ion-input>
       </ion-item>
 
       <ion-button expand="block" type="submit">

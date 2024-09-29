@@ -6,6 +6,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+
 }
 
 #container strong {
@@ -24,4 +25,45 @@
 
 #container a {
   text-decoration: none;
+}
+.small-logo {
+  width: 50px; /* Ancho que prefieras para el logo pequeño */
+  height: 50px; /* Altura que prefieras */
+  object-fit: contain; /* Asegura que la imagen no se deforme */
+  text-align: center;
+}
+.small-image {
+  width: 100px; /* Ancho que prefieras para el logo pequeño */
+  height: 100px; /* Altura que prefieras */
+  object-fit: contain; /* Asegura que la imagen no se deforme */
+  text-align: center;
+}
+.page-background {
+  background-image: url('/assets/icon/fondo.jpg'); /* Ruta de la imagen */
+  background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  display: flex; /* Utiliza Flexbox para alinear las ion-card */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+.page-background-2 {
+  background-image: url('/assets/icon/fondo.jpg'); /* Ruta de la imagen */
+  background-size: cover; /* Para que la imagen cubra toda la pantalla */
+  background-position: center; /* Centrar la imagen */
+  background-repeat: no-repeat; /* No repetir la imagen */
+  height: 100vh; /* Altura completa de la pantalla */
+  display: flex; /* Usar Flexbox para alinear las tarjetas */
+  flex-direction: column; /* Apilar las tarjetas en columna */
+  justify-content: center; /* Centrar verticalmente */
+  align-items: center; /* Centrar horizontalmente */
+}
+ion-card {
+  width: 90%; /* Ajustar el ancho de las tarjetas */
+  max-width: 400px; /* Tamaño máximo de las tarjetas */
+  margin: 20px; /* Espacio entre tarjetas */
+  background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco semitransparente (70% opacidad) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar las tarjetas */
+  border-radius: 10px; /* Bordes redondeados */
 }

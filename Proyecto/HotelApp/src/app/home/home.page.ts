@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {  Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,40 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private router: Router, private alertController:AlertController) {}
+
+  navigateToHome( ) {
+    
+    this.router.navigate(['/home']);
+
+  }
+
+  navigateToLogin() {
+  
+    this.router.navigate(['/login']);
+  }
+
+  navigateToRegister() {
+  
+    this.router.navigate(['/register']);
+
+  }
+  navigateToRoom() {
+  
+    this.router.navigate(['/room']);
+
+  }
+
+
+  //esta es la ventana del mensaje en caso de error.
+  async mostrarAlerta(titulo: string, mensaje: string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: mensaje,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
 
 }

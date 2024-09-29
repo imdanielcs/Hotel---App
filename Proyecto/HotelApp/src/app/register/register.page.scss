@@ -1,0 +1,46 @@
+ion-content {
+    --background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background-color: #D2B48C; /* Color de fondo marrón claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+ion-toolbar {
+    --background: #3F3F3F; /* Color del encabezado */
+}
+
+ion-button {
+    background-color: #3F3F3F; /* Color del botón */
+    --color: white;
+    margin-top: 20px;
+    --border-radius: 5px;
+}
+
+ion-button:hover {
+    background-color: #333; /* Cambio de color en hover */
+}
+
+ion-item {
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+
+ion-label {
+    font-weight: bold;
+}
+
+ion-input {
+    --padding-start: 20px;
+    --padding-end: 10px;
+}

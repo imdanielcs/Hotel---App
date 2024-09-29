@@ -1,0 +1,42 @@
+
+  .greeting-container {
+    text-align: left;
+    margin: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .grid-container {
+    margin: 20px;
+  }
+  
+  .card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card ion-card-content {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  ion-tab-bar {
+    --background: #3F3F3F; /* Fondo oscuro en la barra de navegación */
+  }
+  
+  ion-tab-button {
+    --color: #fff; /* Color del texto */
+  }
+  
+  ion-tab-button.ion-selected {
+    --color: #ffcc00; /* Color del ícono y texto seleccionado */
+  }
+  

@@ -1,48 +1,44 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>HotelApp</ion-title>
+<ion-header>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center">
+      FORMULARIO DE REGISTRO
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">HotelApp</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Formulario de registro</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <form>
-        <ion-item>
-          <ion-label position="floating">Username</ion-label>
-          <ion-input type="text" maxlength="12" minlength="2"  name="username" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" maxlength="4" minlength="4"  name="password" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Nombre</ion-label>
-          <ion-input type="text"  name="nombre" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Apellido</ion-label>
-          <ion-input type="text"  name="apellido" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Email</ion-label>
-          <ion-input type="email"  name="email" required></ion-input>
-        </ion-item>
-        <div class="button-container">
-          <ion-button expand="block" color="primary" type="submit">Registrarse</ion-button>
-        </div>
-      </form>
-    </ion-card-content>
-  </ion-card>
+<ion-content>
+  <div class="form-container">
+    <form>
+      <ion-item>
+        <ion-label position="block">Usuario</ion-label>
+        <ion-input type="text" placeholder="Ingrese su usuario"></ion-input>
+      </ion-item>
 
-  
+      <ion-item>
+        <ion-label position="block">Contraseña</ion-label>
+        <ion-input type="password" placeholder="Ingrese su contraseña"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="block">Nombre</ion-label>
+        <ion-input type="text" placeholder="Ingrese su nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="block">Apellido</ion-label>
+        <ion-input type="text" placeholder="Ingrese su apellido"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="block">Email</ion-label>
+        <ion-input type="email" placeholder="Ingrese su correo electrónico"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit">
+        <ion-icon name="person-add-outline" slot="start"></ion-icon>
+        Registrarse
+      </ion-button>
+    </form>
+  </div>
 </ion-content>

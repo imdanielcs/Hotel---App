@@ -17,7 +17,11 @@ export class DbserviceService {
   // crear objetos dentro del constructor
   // 1 sqlt
   // 2 toast controller
-  constructor(private sqlite: SQLite, private toastController: ToastController, private activerouter: ActivatedRoute,private router: Router) {
+  constructor(
+    private sqlite: SQLite,
+    private toastController: ToastController,
+    private activerouter: ActivatedRoute,
+    private router: Router) {
     this.initDatabase(); // inicializar la base de datos
   }
 

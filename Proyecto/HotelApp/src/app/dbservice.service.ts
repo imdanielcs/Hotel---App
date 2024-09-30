@@ -87,12 +87,33 @@ export class DbserviceService {
 
         return id; // Retorna el ID del cliente insertado si la inserción fue exitosa
       } else {
+        this.mostrarAlerta('Error', 'Error al registrar el usuario 1');
         console.log('Hubo un error al ingresar el cliente.');
         return false; // Retorna false si la inserción falló
       }
     } catch (error: any) {
+      this.mostrarAlerta('Error', 'Error al registrar el usuario 2'+ error.message);
       console.error('Error al ingresar cliente:', error.message);
       throw error; // Lanza el error para ser capturado por el componente
+    }
+  }
+
+  // validar usuario en la base de datos
+  async validarUsuario(correo: string, contrasenia: string) {
+
+    try {
+      const res = await this.db.executeSql(`SELECT * FROM cliente WHERE correo_cliente = ? AND contrasenia = ?`, [correo, contrasenia]);
+      if (res.rows.length > 0) {//numero de filas que trae de la consulta que coincida, si hay 1 que consida
+        this.mostrarAlerta('Correcto', 'se ha encontrado al usuario'+res);
+        return res; // retorna el primer usuario que coincida 
+      } else {
+        this.mostrarAlerta('Error', 'no se encontro a ningun usuario con esa información'+res);
+        return null; // retorna nulo al no encontrar ningún usuario
+      }
+      
+    } catch (error:any) {
+      await this.mostrarAlerta('Error', 'No se encontró al usuario: ');
+      return null;
     }
   }
 

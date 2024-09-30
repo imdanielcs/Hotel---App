@@ -10,37 +10,37 @@
     <form>
       <ion-card-content>
       <ion-item>
-        <ion-input [(ngModel)]="nombre" label-placement="floating" placeholder="Ingrese su nombre">
+        <ion-input [(ngModel)]="nombre" label-placement="floating" placeholder="Ingrese su nombre" name="nombre"  required>
         <div class="animated-div" slot="label">Nombre <ion-text color="danger">(Required)</ion-text></div>
         </ion-input>
       </ion-item>
       <br />
       <ion-item>
-        <ion-input type="text" [(ngModel)]="apellido" label-placement="floating" placeholder="Ingrese su apellido">
+        <ion-input type="text" [(ngModel)]="apellido" label-placement="floating" placeholder="Ingrese su apellido" name="apellido"  required>
         <div class="animated-div" slot="label">Apellido <ion-text color="danger">(Required)</ion-text></div>
         </ion-input>
       </ion-item>
       <br />
       <ion-item>
-        <ion-input type="email" [(ngModel)]="correo" label-placement="floating" placeholder="Ingrese su correo electrónico">
+        <ion-input type="email" [(ngModel)]="correo" label-placement="floating" placeholder="Ingrese su correo electrónico"  name="correo" required>
         <div class="animated-div" slot="label">Email<ion-text color="danger">(Required)</ion-text></div>
         </ion-input>
       </ion-item>
       <br />
       <ion-item>
-        <ion-input type="password" [(ngModel)]="contrasenia"label-placement="floating" placeholder="Ingrese su contraseña">
+        <ion-input type="password" [(ngModel)]="contrasenia" label-placement="floating" placeholder="Ingrese su contraseña"  name="contrasenia" required>
         <div class="animated-div" slot="label">Password <ion-text color="danger">(Required)</ion-text></div>
         </ion-input>
       </ion-item>
       <br />
       <ion-item>
-        <ion-input type="text" [(ngModel)]="recuperacionContrasenia" label-placement="floating" placeholder="Ingrese dato secreto">
+        <ion-input type="text" [(ngModel)]="recuperacionContrasenia" label-placement="floating" placeholder="Ingrese dato secreto"  name="recuperacionContrasenia" required>
         <div class="animated-div" slot="label">Dato de recuperación de contraseñia<ion-text color="danger">(Required)</ion-text></div>
         </ion-input>
       </ion-item>
       <br />
       <ion-item>
-        <ion-input type="text" [(ngModel)]="telefono" label-placement="floating"  placeholder="+569.. +66..">
+        <ion-input type="text" [(ngModel)]="telefono" label-placement="floating"  placeholder="+569.. +66.."  name="telefono" required>
         <div class="animated-div" slot="label">Numero de Contacto<ion-text color="danger">(Required)</ion-text></div>
         </ion-input>
       </ion-item>

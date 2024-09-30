@@ -34,7 +34,7 @@ export class RegisterPage implements OnInit {
 
   async registrarse(){
     // Verifica si alguno de los campos está vacío
-    if (!this.nombre.trim() || !this.contrasenia.trim()||!this.telefono.trim() || !this.apellido.trim()) {
+    if (!this.nombre.trim() || !this.contrasenia.trim()) {
       this.mostrarAlerta("Error", "Por favor completa todos los campos");
       return; // Detiene la ejecución si hay algún campo vacío y manda un mensaje
     }else{
@@ -60,11 +60,11 @@ export class RegisterPage implements OnInit {
           console.log('Hubo un error al registrar el usuario.');
         }
       } catch (error: any) {
-        this.mostrarAlerta('Error', 'Error al registrar el usuario');
+        this.mostrarAlerta('Error', 'Error al registrar el usuario'+ error.message);
         console.error('Error al registrar el usuario:', error.message);
       }
 
-      
+       
     }
 }
 volverHome(){

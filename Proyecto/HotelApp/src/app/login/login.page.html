@@ -4,7 +4,7 @@
     <ion-icon (click)="volverHome()" slot="start" name="arrow-back-outline" ></ion-icon>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding" class="ion-padding-start">
+
 
 <ion-content stiles [fullscreen]="true" >
   <ion-header collapse="condense">
@@ -20,14 +20,14 @@
       <ion-card-content>
 
         <ion-item>
-          <ion-input label="Nombre Usuario" label-placement="floating"  placeholder="Enter user" name="usuario"></ion-input>
+          <ion-input label="Correo Usuario" [(ngModel)]="correo"  label-placement="floating"  placeholder="Enter user" name="usuario" required></ion-input>
         </ion-item>
         <br />
         <ion-item>
-          <ion-input type="password"   placeholder="Password" maxlength="6" name="password"></ion-input>
+          <ion-input type="password"  [(ngModel)]="contrasenia" placeholder="Password" maxlength="6" name="password" required></ion-input>
         </ion-item>
       </ion-card-content>
-      <ion-button expand="block"> Ingresar</ion-button>
+      <ion-button expand="block" (click)="ingresar()"> Ingresar</ion-button>
       <ion-button expand="block" (click)="registrar()"> registrarse</ion-button>
    
   </ion-card>

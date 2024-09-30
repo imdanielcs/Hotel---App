@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      Sencilla
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="heart-outline"></ion-icon>
+      <ion-icon name="share-social-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <!-- Imagen principal de la habitación (Tome imagenes de la web para que se pueda vizualizar) -->
+  <div class="room-image">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3EVqiavem_SlnU6J24GyFBgVOXfRBl4Y7MQ&s" alt="Habitación Sencilla" />
+  </div>
+
+  <!-- Descripción de la habitación -->
+  <div class="room-details">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Sencilla</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Cama individual cómoda, escritorio con silla para trabajar, baño privado con ducha. Facilidades: aire acondicionado, WiFi, televisión por cable.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Mapa de ubicación (Tome imagenes de la web para que se pueda vizualizar) -->
+  <div class="map-container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhQzQxYqtpLh2BhK4txRpP3JU5Z7RA6nBaYg&s" alt="Ubicación de la habitación" />
+  </div>
+
+  <!-- Información adicional -->
+  <div class="info-additional">
+    <p><ion-icon name="eye-outline"></ion-icon> 110 personas vieron esta habitación</p>
+  </div>
+
+  
+  <div class="bottom-bar">
+    <ion-button expand="block" color="secondary">CONTINUAR</ion-button>
+    <ion-badge color="dark">$29.500</ion-badge>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="explore">
+          <ion-icon name="compass-outline"></ion-icon>
+          <ion-label>Explorar</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="favorites">
+          <ion-icon name="heart-outline"></ion-icon>
+          <ion-label>Favoritos</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="bookings">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <ion-label>Reservas</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="profile">
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

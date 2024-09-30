@@ -33,6 +33,14 @@ export class HomePage {
 
   }
 
+  navigateToCheckinCheckout() {
+  
+    this.router.navigate(['/checkin-checkout']);
+
+  }
+
+  
+
 
   //esta es la ventana del mensaje en caso de error.
   async mostrarAlerta(titulo: string, mensaje: string) {

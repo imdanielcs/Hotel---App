@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem('correo', this.correo);
         localStorage.setItem('contrasenia', this.contrasenia);
         localStorage.setItem('idCliente', this.idCliente.toString());
-        this.mostrarAlerta('Éxito', 'Inicio de sesión exitoso ' + this.correo + response);
+        this.mostrarAlerta('Éxito', 'Inicio de sesión exitoso ' + this.correo +'numero de id_cliente: '+ this.idCliente);
         this.router.navigate(['/home']); // Redirigir al menú
       } else {
         this.mostrarAlerta('Error', 'Usuario o contraseña incorrectos');

@@ -29,7 +29,7 @@ export class HomePage {
   }
   navigateToRoom() {
   
-    this.router.navigate(['/room']);
+    this.router.navigate(['/rooms']);
 
   }
 

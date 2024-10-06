@@ -139,20 +139,37 @@
         </ion-item>
     </ion-list>
        <ion-content>
-          <ion-item>
+       <!--calendario 1 -->
+          <ion-item >
             <ion-label>Selecciona una fecha</ion-label>
             <ion-datetime
+              name="calendario1"
               presentation="date"
               display-format="DD/MM/YYYY"
               picker-format="DD/MM/YYYY"
-              [(ngModel)]="selectedDate"
+              [(ngModel)]="selectedDate1"
               (ionChange)="onDateChange($event)">
             </ion-datetime>
           </ion-item>
-
           <ion-item>
             <ion-label>Fecha seleccionada:</ion-label>
-            <ion-text>{{ selectedDate }}</ion-text>
+            <ion-text>{{ selectedDate1 }}</ion-text>
+          </ion-item>
+          <!--calendario 2 -->
+          <ion-item>
+            <ion-label>Selecciona una fecha</ion-label>
+            <ion-datetime
+              name="calendario2"
+              presentation="date"
+              display-format="DD/MM/YYYY"
+              picker-format="DD/MM/YYYY"
+              [(ngModel)]="selectedDate2"
+              (ionChange)="onDateChange2($event)">
+            </ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label>Fecha seleccionada:</ion-label>
+            <ion-text>{{ selectedDate2 }}</ion-text>
           </ion-item>
         
         <ion-item >

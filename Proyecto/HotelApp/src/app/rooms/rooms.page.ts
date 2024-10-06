@@ -23,8 +23,7 @@ export class RoomsPage implements OnInit {
   contrasenia: any = '';
   idCliente: any = '';
   isCorreoExist: boolean = false;
-  fechaSeleccionada: Date | null = null;
-  fechasSeleccionadas: Date[] = [];
+  selectedDate: string;
   
 
   constructor(
@@ -37,6 +36,7 @@ export class RoomsPage implements OnInit {
     this.correo = localStorage.getItem('correo');
     this.contrasenia = localStorage.getItem('contrasenia');
     this.idCliente =Number(localStorage.getItem('idCliente')) ;
+    this.selectedDate = '';
   
    }
 
@@ -70,24 +70,12 @@ export class RoomsPage implements OnInit {
     this.modalController.dismiss(null, 'cancel');
   }
 
+  
   onDateChange(event: any) {
-    const selectedValues = event.detail.value;
-    this.fechasSeleccionadas = selectedValues.map((fecha: string) => new Date(fecha));  
-  }
-   
-  confirmar() {
-    if (this.fechasSeleccionadas.length > 0) {
-      const primeraFecha = this.fechasSeleccionadas[1];
-      const ultimaFecha = this.fechasSeleccionadas[this.fechasSeleccionadas.length-1];
-      this.mostrarAlerta('Fecha', 'A selecionado la fechas: '+ primeraFecha + ' y '+ultimaFecha);
-
-      console.log('Primera fecha seleccionada:', primeraFecha);
-      console.log('Última fecha seleccionada:', ultimaFecha);
-
-      // Aquí puedes realizar otras acciones con las fechas
-    } else {
-      this.mostrarAlerta('Error', 'Por favor, selecione una fecha.');
-    }
+    const fullDate = event.detail.value; // Capturamos el valor completo que incluye la hora
+    this.selectedDate = fullDate.split('T')[0]; // Tomamos solo la parte de la fecha y descartamos la hora
+    console.log('Fecha seleccionada sin hora:', this.selectedDate);
+    this.mostrarAlerta('Fecha', 'A selecionado la fechas: '+ this.selectedDate);
   }
 
   confirm(fechaInt: Date, id: number, idCliente: number) {

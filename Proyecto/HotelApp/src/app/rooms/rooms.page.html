@@ -138,19 +138,23 @@
               </div>
         </ion-item>
     </ion-list>
-        <ion-item>
-            <ion-item>
-              <ion-label>Selecciona una fecha</ion-label>
-              <ion-datetime 
-                presentation="date" multiple="true"
-                (ionChange)="onDateChange($event)" 
-                displayFormat="YYYY-MM-DD" 
-                pickerFormat="DD MMM YYYY"
-                type="date"> <!-- Solo este tipo para seleccionar fecha -->
-              </ion-datetime>
-            </ion-item>
-            <ion-button (click)="confirmar()">Confirmar</ion-button>
-        </ion-item>
+       <ion-content>
+          <ion-item>
+            <ion-label>Selecciona una fecha</ion-label>
+            <ion-datetime
+              presentation="date"
+              display-format="DD/MM/YYYY"
+              picker-format="DD/MM/YYYY"
+              [(ngModel)]="selectedDate"
+              (ionChange)="onDateChange($event)">
+            </ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Fecha seleccionada:</ion-label>
+            <ion-text>{{ selectedDate }}</ion-text>
+          </ion-item>
+        
         <ion-item >
               <ion-content class="ion-center">
               <ion-button expand="block" id="open-modal-depositar" (click)="continuarReserva()" [disabled]="id < 1 || id > 4">Realizar Reserva</ion-button>
@@ -197,7 +201,7 @@
               </ion-modal>
             </ion-content>
             </ion-item>
-
+          </ion-content>
 
           
   </div>

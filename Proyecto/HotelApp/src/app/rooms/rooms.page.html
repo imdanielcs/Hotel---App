@@ -37,7 +37,7 @@
         </ion-card-content>
         <div class="bottom-bar">
           <ion-button expand="block" color="secondary">Conocer mas</ion-button>
-          <ion-button expand="block" (click)="seleccionarHabitacion('Habitación doble', 1,'$60.000')" color="secondary" >Reservar</ion-button>
+          <ion-button expand="block" [disabled]="!isCorreoExist" (click)="seleccionarHabitacion('Habitación doble', 1,'$60.000')" color="secondary" >Reservar</ion-button>
         </div>
     </ion-card>
   </div>
@@ -58,7 +58,7 @@
         </ion-card-content>
         <div class="bottom-bar">
           <ion-button expand="block" color="secondary">Conocer mas</ion-button>
-          <ion-button expand="block" color="secondary" (click)="seleccionarHabitacion('Habitacion Matrimonial', 2,'$60.000')">Reservar</ion-button>
+          <ion-button expand="block" color="secondary" [disabled]="!isCorreoExist" (click)="seleccionarHabitacion('Habitacion Matrimonial', 2,'$60.000')">Reservar</ion-button>
         </div>
     </ion-card>
   </div>
@@ -79,7 +79,7 @@
         </ion-card-content>
         <div class="bottom-bar">
           <ion-button expand="block" color="secondary">Conocer mas</ion-button>
-          <ion-button expand="block" color="secondary" (click)="seleccionarHabitacion('Habitación doble deluxe', 3,'$60.500')">Reservar</ion-button>
+          <ion-button expand="block" color="secondary" [disabled]="!isCorreoExist" (click)="seleccionarHabitacion('Habitación doble', 1, '$60.000')">Reservar</ion-button>
         </div>
     </ion-card>
   </div>
@@ -100,13 +100,16 @@
           </ion-card-content>
           <div class="bottom-bar">
             <ion-button expand="block" color="secondary">Conocer mas</ion-button>
-            <ion-button expand="block" color="secondary" (click)="seleccionarHabitacion('Habitación doble simple', 4,'$59.500')">Reservar</ion-button>
+            <ion-button expand="block" color="secondary" [disabled]="!isCorreoExist" (click)="seleccionarHabitacion('Habitación doble simple', 4,'$59.500')">Reservar</ion-button>
           </div>
       </ion-card>
     </div>
 
   <!-- Mapa de ubicación (Tome imagenes de la web para que se pueda vizualizar) -->
   <div>
+  <div >
+    <ion-button size="small" fill="outline" color="primary" (click)="navigateToLogin()">Login</ion-button>
+  </div>
     <ion-list>
     <ion-card-header>
         <ion-card-title>Reserva ahora</ion-card-title>
@@ -136,16 +139,22 @@
         </ion-item>
     </ion-list>
         <ion-item>
-            <ion-datetime presentation="date" multiple="true"></ion-datetime>
-            <script>
-              const datetime = document.querySelector('ion-datetime');
-              datetime.value = [];
-            </script>
+            <ion-item>
+              <ion-label>Selecciona una fecha</ion-label>
+              <ion-datetime 
+                presentation="date" multiple="true"
+                (ionChange)="onDateChange($event)" 
+                displayFormat="YYYY-MM-DD" 
+                pickerFormat="DD MMM YYYY"
+                type="date"> <!-- Solo este tipo para seleccionar fecha -->
+              </ion-datetime>
+            </ion-item>
+            <ion-button (click)="confirmar()">Confirmar</ion-button>
         </ion-item>
         <ion-item >
               <ion-content class="ion-center">
-              <ion-button expand="block" id="open-modal-depositar" >Realizar Reserva</ion-button>
-              <ion-modal trigger="open-modal-depositar" (willDismiss)="onWillDismissDepositarme($event)">
+              <ion-button expand="block" id="open-modal-depositar" (click)="continuarReserva()" [disabled]="id < 1 || id > 4">Realizar Reserva</ion-button>
+              <ion-modal trigger="open-modal-depositar" (willDismiss)="onWillDismiss($event)">
                 <ng-template>
                   <ion-header>
                     <ion-toolbar>
@@ -187,9 +196,6 @@
                 </ng-template>
               </ion-modal>
             </ion-content>
-        
-              
-         
             </ion-item>
 
 

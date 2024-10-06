@@ -38,6 +38,13 @@
   object-fit: contain; /* Asegura que la imagen no se deforme */
   text-align: center;
 }
+
+.median-image {
+  width: 450px; /* Ancho que prefieras para el logo pequeño */
+  height:170px; /* Altura que prefieras */
+  margin: 20px;
+  border-radius: 10px; /* Bordes redondeados */
+}
 .page-background {
   background-image: url('/assets/icon/fondo.jpg'); /* Ruta de la imagen */
   background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
@@ -61,7 +68,7 @@
 }
 ion-card {
   width: 90%; /* Ajustar el ancho de las tarjetas */
-  max-width: 400px; /* Tamaño máximo de las tarjetas */
+  max-width: 600px; /* Tamaño máximo de las tarjetas */
   margin: 20px; /* Espacio entre tarjetas */
   background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco semitransparente (70% opacidad) */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar las tarjetas */

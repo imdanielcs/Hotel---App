@@ -260,3 +260,16 @@ WHERE correo_cliente = 'jpedro_perez@example.com';
 COMMIT;
 
 SELECT * FROM CLIENTE;
+
+--ingresar datos a las habitaciones:
+INSERT INTO HABITACION (tipo_habitacion, capacidad, precio_dia, descripcion_habitacion, num_habitacion, descrip_disponibilidad, id_hotel_fk)
+VALUES ('Habitacion doble', 2, 60000, 'Habitación con dos camas individuales', 101, 'S', 1);
+
+INSERT INTO HABITACION (tipo_habitacion, capacidad, precio_dia, descripcion_habitacion, num_habitacion, descrip_disponibilidad, id_hotel_fk)
+VALUES ('Habitacion matrimonial', 2, 60000, 'Habitación de lujo con vista al mar', 102, 'S', 1);
+
+INSERT INTO HABITACION (tipo_habitacion, capacidad, precio_dia, descripcion_habitacion, num_habitacion, descrip_disponibilidad, id_hotel_fk)
+VALUES ('Habitación doble deluxe', 2, 65000, 'Habitación con una cama individual', 103, 'N', 1);
+
+INSERT INTO HABITACION (tipo_habitacion, capacidad, precio_dia, descripcion_habitacion, num_habitacion, descrip_disponibilidad, id_hotel_fk)
+VALUES ('Habitación doble simple', 2, 59500, 'Habitación con tres camas individuales', 104, 'S', 1);

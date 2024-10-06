@@ -8,8 +8,15 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  correo: any='';
+  idCliente: any='';
+ 
+  constructor(private router: Router, private alertController:AlertController) {
 
-  constructor(private router: Router, private alertController:AlertController) {}
+    this.correo = localStorage.getItem('correo');
+    this.idCliente = localStorage.getItem('idCliente');
+
+  }
 
   navigateToHome( ) {
     
@@ -28,9 +35,7 @@ export class HomePage {
 
   }
   navigateToRoom() {
-  
     this.router.navigate(['/rooms']);
-
   }
 
   navigateToCheckinCheckout() {
@@ -51,6 +56,19 @@ export class HomePage {
     });
   
     await alert.present();
+  }
+  Salir(){
+
+    this.removerItems();
+    this.router.navigate(['/login']);
+
+  }
+  //elima cada uno de los items
+  removerItems(){
+    localStorage.removeItem('correo');
+    localStorage.removeItem('idCliente');
+ 
+   
   }
 
 }

@@ -92,21 +92,26 @@ export class RoomsPage implements OnInit {
 
   continuarReserva() {
     // Verificamos si el id está entre 1 y 4
-    if (this.id >= 1 && this.id <= 4) {
-      console.log('ID válido, proceder con la reserva');
-      
-      // Simulamos el clic en el botón que abre el modal (asegúrate de que exista en el HTML)
-      const modalButton = document.getElementById('open-modal-depositar');
-      if (modalButton) {
-        modalButton.click(); // Dispara el modal si el ID es válido
+    if (this.selectedDate1.trim() == ''){
+      this.mostrarAlerta('Error', 'Por favor, selecciona una fecha valida.');
+    }else{
+      if (this.id >= 1 && this.id <= 4 ) {
+        console.log('ID válido, proceder con la reserva');
+        
+        // Simulamos el clic en el botón que abre el modal (asegúrate de que exista en el HTML)
+        const modalButton = document.getElementById('open-modal-depositar');
+        if (modalButton) {
+          modalButton.click(); // Dispara el modal si el ID es válido
+        } else {
+          console.log('Botón del modal no encontrado');
+        }
       } else {
-        console.log('Botón del modal no encontrado');
+        console.log('ID no válido, no se puede continuar con la reserva');
+        // Mostramos un mensaje de error al usuario
+        this.mostrarAlerta('Error', 'Por favor, selecciona una habitación válida.');
       }
-    } else {
-      console.log('ID no válido, no se puede continuar con la reserva');
-      // Mostramos un mensaje de error al usuario
-      this.mostrarAlerta('Error', 'Por favor, selecciona una habitación válida.');
     }
+
   }
 
   checkCorreo() {
@@ -148,6 +153,19 @@ export class RoomsPage implements OnInit {
 
   navigateToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  async confirmaReserva() {
+
+    // Si los campos NO están vacíos, procede a verificar el usuario
+    try {
+      const response = await this.apiService.enviaReserva(this.idCliente, this.id.toString(), this.selectedDate1).toPromise();
+      this.mostrarAlerta('Reservas', response.message);
+     
+    } catch (error: any) {
+      this.mostrarAlerta('Error', 'La reserva no pudo ser enviada: ' + error.message);
+      console.error(error);
+    }
   }
   
 

@@ -155,7 +155,7 @@
             <ion-label>Fecha seleccionada:</ion-label>
             <ion-text>{{ selectedDate1 }}</ion-text>
           </ion-item>
-          <!--calendario 2 -->
+          <!--calendario 2 
           <ion-item>
             <ion-label>Selecciona una fecha</ion-label>
             <ion-datetime
@@ -171,9 +171,9 @@
             <ion-label>Fecha seleccionada:</ion-label>
             <ion-text>{{ selectedDate2 }}</ion-text>
           </ion-item>
-        
+        -->
         <ion-item >
-              <ion-content class="ion-center">
+              <ion-content class="ion-center" >
               <ion-button expand="block" id="open-modal-depositar" (click)="continuarReserva()" [disabled]="id < 1 || id > 4">Realizar Reserva</ion-button>
               <ion-modal trigger="open-modal-depositar" (willDismiss)="onWillDismiss($event)">
                 <ng-template>
@@ -184,7 +184,7 @@
                       </ion-buttons>
                       <ion-title>Realizar Reserva</ion-title>
                       <ion-buttons slot="end">
-                        <ion-button >Confirm</ion-button>
+                        <ion-button (click)="confirmaReserva()">Confirm</ion-button>
                       </ion-buttons>
                     </ion-toolbar>
                   </ion-header>
@@ -207,7 +207,7 @@
                     </ion-item>
                     <ion-item>
                       <ion-card-title>Fechas elegidas:</ion-card-title>
-                      <h4></h4>
+                      <h4>{{selectedDate1}}</h4>
                     </ion-item>
                     <ion-item>
                       <ion-card-title>Monto de la Reserva:</ion-card-title>

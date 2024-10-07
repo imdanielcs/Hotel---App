@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://192.168.0.107:3000/api/login'; // Cambia a la IP de tu máquina
+  private apiUrl = 'http://localhost:3000/api/login';
+  private apiReservaUrl = 'http://localhost:3000/api/reservar';
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +18,17 @@ export class ApiService {
       .set('contrasenia', contrasenia);
 
     // Realiza la solicitud GET con los parámetros en la URL
-    return this.http.get<any>(`http://192.168.0.107:3000/api/login`, { params });
+    return this.http.get<any>(this.apiUrl, { params });
+  }
+
+  enviaReserva(idCliente: string, idHabitacion: string, fechaReserva: string): Observable<any> {
+    // Prepara los parámetros de la solicitud
+    const params = new HttpParams()
+      .set('idCliente', idCliente)
+      .set('idHabitacion', idHabitacion)
+      .set('fechaReserva', fechaReserva);
+
+    // Realiza la solicitud GET con los parámetros en la URL
+    return this.http.get<any>(this.apiReservaUrl, { params });
   }
 }

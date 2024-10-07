@@ -1,0 +1,12 @@
+database:
+  user: HotelApp
+  password: OracleCloud123
+  connectString: oracle_db:1521/FREEPDB1
+
+mailjet:
+  apiKey: 'API-KEY'
+  apiSecret: 'SECRET-KEY'
+
+emailSender:
+  email: 'MAILPRUEBA'
+  name: 'Hotel App'
